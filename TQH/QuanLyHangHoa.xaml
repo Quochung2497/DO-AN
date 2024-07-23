@@ -1,0 +1,207 @@
+﻿<UserControl x:Class="TQH.QuanLyHangHoa"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TQH"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+            <!-- Main Grid with Row and Column Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Header Section -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#FF78B9A0" Height="60" Margin="10,0,0,0" Opacity="0.6">
+                <Label Content="Quản Lý Hàng Hóa" FontSize="24" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </StackPanel>
+
+            <!-- Main Content Section -->
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="7*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Left Side: HangHoa Details -->
+                <GroupBox Grid.Column="0" Header="Chi tiết hàng hóa" Margin="5" Foreground="#FFB7B7B7">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Mã Hàng Hóa -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,3">
+                            <Label Content="Mã Hàng Hóa" Height="30" VerticalAlignment="Center" Foreground="White" />
+                            <TextBox Name="txtMaHangHoa" Width="100" Height="25" VerticalAlignment="Center" Margin="25,0,0,0" />
+                        </StackPanel>
+
+                        <!-- Tên Hàng Hóa -->
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,3">
+                            <Label Content="Tên Hàng Hóa" Height="30" VerticalAlignment="Center" Foreground="White" />
+                            <TextBox Name="txtTenHangHoa" Width="100" Height="25" VerticalAlignment="Center" Margin="24,0,0,0" />
+                        </StackPanel>
+
+                        <!-- Giá -->
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,3">
+                            <Label Content="Giá" Height="30" VerticalAlignment="Center" Foreground="White" />
+                            <TextBox Name="txtGia" Width="100" Height="25" VerticalAlignment="Center" Margin="82,0,0,0" />
+                        </StackPanel>
+
+                        <!-- Số Lượng -->
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,3">
+                            <Label Content="Số Lượng" Height="30" VerticalAlignment="Center" Foreground="White" />
+                            <TextBox Name="txtSoLuong" Width="100" Height="25" VerticalAlignment="Center" Margin="48,0,0,0" />
+                        </StackPanel>
+
+                        <!-- Nhà Cung Cấp -->
+                        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,3">
+                            <Label Content="Nhà Cung Cấp" Height="30" VerticalAlignment="Center" Foreground="White" />
+                            <ComboBox Name="cbNCC" Width="100" Height="25" VerticalAlignment="Center" Margin="21,0,0,0" />
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+
+                <!-- Right Side: DataGrid for HangHoa List -->
+                <GroupBox Grid.Column="1" Header="Danh sách hàng hóa" Margin="5" Foreground="#FFC3C3C3">
+                    <DataGrid Name="DataHangHoa" SelectionChanged="DataHangHoa_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Mã Hàng Hóa" Binding="{Binding MaHangHoa}" Width="*" />
+                            <DataGridTextColumn Header="Tên Hàng Hóa" Binding="{Binding TenHangHoa}" Width="*" />
+                            <DataGridTextColumn Header="Giá" Binding="{Binding Gia}" Width="*" />
+                            <DataGridTextColumn Header="Số Lượng" Binding="{Binding SoLuong}" Width="*" />
+                            <DataGridTextColumn Header="Nhà Cung Cấp" Binding="{Binding NCC}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+
+            <!-- Button Panel -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+                <!-- Button Thêm Hàng Hóa -->
+                <Button Width="130" Height="40" Margin="5" Click="ThemHangHoa_Click" Background="{x:Null}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/Add.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                        <TextBlock Text="Thêm hàng hóa" VerticalAlignment="Center" Foreground="White"/>
+                    </StackPanel>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <!-- Button Xóa Hàng Hóa -->
+                <Button Width="130" Height="40" Margin="5" Click="XoaHangHoa_Click" Background="{x:Null}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/Delete.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                        <TextBlock Text="Xóa hàng hóa" VerticalAlignment="Center" Foreground="White"/>
+                    </StackPanel>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF3C3C3C"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <!-- Button Sửa Hàng Hóa -->
+                <Button Width="130" Height="40" Margin="5" Click="SuaHangHoa_Click" Background="{x:Null}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/Edit.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                        <TextBlock Text="Sửa hàng hóa" VerticalAlignment="Center" Foreground="White"/>
+                    </StackPanel>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF3C3C3C"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            <!-- Button Sửa Hàng Hóa -->
+            <Button Width="130" Height="40" Margin="5" Click="TimHangHoa_Click" Background="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/Find.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Tìm hàng hóa" VerticalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FF3C3C3C"/>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <!-- Button Hủy Thao Tác -->
+                <Button Width="130" Height="40" Margin="5" Click="HuyThaoTac_Click" Background="{x:Null}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/Redo.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                        <TextBlock Text="Hủy thao tác" VerticalAlignment="Center" Foreground="White"/>
+                    </StackPanel>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF3C3C3C"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </UserControl>

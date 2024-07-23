@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Add.png" />
+    <None Remove="Resources\BackGround.jpg" />
+    <None Remove="Resources\BG.jpg" />
+    <None Remove="Resources\Bill.png" />
+    <None Remove="Resources\Brave-logo.png" />
+    <None Remove="Resources\Delete.png" />
+    <None Remove="Resources\desktop_icon.ico" />
+    <None Remove="Resources\Edit.png" />
+    <None Remove="Resources\Employee.png" />
+    <None Remove="Resources\Find.png" />
+    <None Remove="Resources\Login.png" />
+    <None Remove="Resources\Password.png" />
+    <None Remove="Resources\product.png" />
+    <None Remove="Resources\Quit.png" />
+    <None Remove="Resources\Redo.png" />
+    <None Remove="Resources\Sale.png" />
+    <None Remove="Resources\User.png" />
+    <None Remove="Resources\UserIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Add.png" />
+    <Resource Include="Resources\BackGround.jpg" />
+    <Resource Include="Resources\BG.jpg" />
+    <Resource Include="Resources\Bill.png" />
+    <Resource Include="Resources\Brave-logo.png" />
+    <Resource Include="Resources\Delete.png" />
+    <Resource Include="Resources\desktop_icon.ico" />
+    <Resource Include="Resources\Edit.png" />
+    <Resource Include="Resources\Employee.png" />
+    <Resource Include="Resources\Find.png" />
+    <Resource Include="Resources\Login.png" />
+    <Resource Include="Resources\Password.png" />
+    <Resource Include="Resources\product.png" />
+    <Resource Include="Resources\Quit.png" />
+    <Resource Include="Resources\Redo.png" />
+    <Resource Include="Resources\Sale.png" />
+    <Resource Include="Resources\User.png" />
+    <Resource Include="Resources\UserIcon.png" />
+  </ItemGroup>
+
+</Project>

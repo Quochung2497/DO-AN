@@ -1,0 +1,95 @@
+﻿<Window x:Class="TQH.QuanLyBanHang"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
+        xmlns:local="clr-namespace:TQH"
+        mc:Ignorable="d"
+        Title="Quản Lý Cửa Hàng Tạp Hóa" Height="600" Width="1080"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF040719"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Title bar -->
+            <RowDefinition Height="*"/>
+            <!-- Content area -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <!-- Menu area -->
+            <ColumnDefinition Width="*"/>
+            <!-- Content area -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Title bar -->
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Quản Lý Cửa Hàng Tạp Hóa" 
+                       Foreground="DarkGray"
+                       FontSize="12"
+                       FontFamily="Montserrat"
+                       VerticalAlignment="Center"
+                       Margin="10,5"/>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnMinimize"
+                        Width="30"
+                        Content="🗕"
+                        BorderThickness="0"
+                        Foreground="White"
+                        FontSize="20"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Click="btnMinimize_Click"
+                        Background="{x:Null}"/>
+                <Button x:Name="btnMaximize"
+                        Width="30"
+                        BorderThickness="0"
+                        Content="🗖"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Click="btnMaximize_Click"
+                        Background="{x:Null}"/>
+                <Button x:Name="btnClose"
+                        Width="30"
+                        BorderThickness="0"
+                        Content="✖"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Click="btnClose_Click"
+                        Background="{x:Null}"/>
+            </StackPanel>
+        </Grid>
+        <!-- Menu area -->
+        <StackPanel Grid.Row="1" Grid.Column="0" Background="#FF040719" VerticalAlignment="Stretch" >
+            <Button x:Name="btnHome" Content="Home" Foreground="White" Background="Transparent" Margin="0,5" Padding="10" Click="Home_Click"/>
+            <Button x:Name="btnKhachHang" Content="Khách Hàng" Foreground="White" Background="Transparent" Click="QLKH_Click" Margin="0,5" Padding="10"/>
+            <Button x:Name="btnNhanVien" Content="Nhân Viên" Foreground="White" Background="Transparent" Click="QLNV_Click" Margin="0,5" Padding="10"/>
+            <Button x:Name="btnHangHoa" Content="Hàng Hóa" Foreground="White" Background="Transparent" Click="QLHH_Click" Margin="0,5" Padding="10"/>
+            <Button x:Name="btnHoaDon" Content="Hóa Đơn" Foreground="White" Background="Transparent" Click="QLHD_Click" Margin="0,5" Padding="10"/>
+            <Button x:Name="btnNCC" Content="Nhà Cung Cấp" Foreground="White" Background="Transparent" Click="QLNCC_Click" Margin="0,5" Padding="10"/>
+            <Button x:Name="btnNhapHang" Content="Phiếu Nhập" Foreground="White" Background="Transparent" Click="QLPN_Click" Margin="0,5" Padding="10"/>
+            <Button x:Name="btnTaiKhoan" Content="Tài Khoản" Foreground="White" Background="Transparent" Click="QLTK_Click" Margin="0,5" Padding="10"/>
+            <Button x:Name="btnThoat" Content="Thoát" Foreground="White" Background="Transparent" Click="Exit_Click" Margin="0,5" Padding="10"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="1" >
+            <Grid.Background>
+                <ImageBrush ImageSource="Resources/Background.jpg" Stretch= "Fill" Opacity="0.1"/>
+            </Grid.Background>
+            <ContentControl x:Name="MainContentControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+    </Grid>
+</Window>

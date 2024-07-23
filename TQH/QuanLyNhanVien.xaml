@@ -1,0 +1,214 @@
+﻿<UserControl x:Class="TQH.QuanLyNhanVien"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TQH"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+    <Grid>
+        <!-- Main Grid with Row and Column Definitions -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header Section -->
+        <StackPanel Orientation="Horizontal" Background="#2C3E50" Height="60" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,0,0,0" Opacity="0.6">
+            <Label Content="Quản Lý Nhân Viên" FontSize="24" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </StackPanel>
+
+        <!-- Main Content Section -->
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="7*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Side: DataGrid and Employee Details -->
+            <GroupBox Grid.Column="0" Header="Chi tiết nhân viên" Margin="5" Foreground="#FFB7B7B7" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Mã NV -->
+                    <Label Grid.Row="0" Content="Mã NV" Height="30" VerticalAlignment="Center" Foreground="White" Margin="0,3" />
+                    <TextBox Grid.Row="0" Name="txtMaNV" Width="150" Height="25" VerticalAlignment="Center" Margin="50,0,0,0" />
+
+                    <!-- Họ tên -->
+                    <Label Grid.Row="1" Content="Họ tên" Height="30" VerticalAlignment="Center" Foreground="White" Margin="0,3"/>
+                    <TextBox Grid.Row="1" Name="txtHoTen" Width="150" Height="25" VerticalAlignment="Center" Margin="50,0,0,0" />
+
+                    <!-- Giới tính -->
+                    <Label Grid.Row="2" Content="Giới tính" Height="30" VerticalAlignment="Center" Foreground="White" Margin="0,3"/>
+                    <ComboBox Grid.Row="2" Name="cbGioiTinh" Width="150" Height="25" VerticalAlignment="Center" Margin="50,0,0,0">
+                        <ComboBoxItem Content="Nam" />
+                        <ComboBoxItem Content="Nữ" />
+                    </ComboBox>
+
+                    <!-- Địa chỉ -->
+                    <Label Grid.Row="3" Content="Địa chỉ" Height="30" VerticalAlignment="Center" Foreground="White" Margin="0,3"/>
+                    <TextBox Grid.Row="3" Name="txtDiaChi" Width="150" Height="25" VerticalAlignment="Center" Margin="50,0,0,0" />
+
+                    <!-- Email -->
+                    <Label Grid.Row="4" Content="Email" Height="30" VerticalAlignment="Center" Foreground="White" Margin="0,3"/>
+                    <TextBox Grid.Row="4" Name="txtEmail" Width="150" Height="25" VerticalAlignment="Center" Margin="50,0,0,0" />
+
+                    <!-- SĐT -->
+                    <Label Grid.Row="5" Content="SĐT" Height="30" VerticalAlignment="Center" Foreground="White" Margin="0,3"/>
+                    <TextBox Grid.Row="5" Name="txtSDT" Width="150" Height="25" VerticalAlignment="Center" Margin="50,0,0,0" />
+                </Grid>
+            </GroupBox>
+
+            <!-- Right Side: DataGrid for Employee List -->
+            <GroupBox Grid.Column="1" Header="Danh sách nhân viên" Margin="5" Foreground="#FFC3C3C3">
+                <DataGrid Name="DataNV" SelectionChanged="DataUsers_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mã NV" Binding="{Binding MaNV}" Width="*" />
+                        <DataGridTextColumn Header="Họ tên" Binding="{Binding HoTen}" Width="*" />
+                        <DataGridTextColumn Header="Giới tính" Binding="{Binding GioiTinh}" Width="*" />
+                        <DataGridTextColumn Header="Địa chỉ" Binding="{Binding DiaChi}" Width="*" />
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*" />
+                        <DataGridTextColumn Header="SĐT" Binding="{Binding SDT}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+
+        <!-- Button Panel -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+            <!-- Button Thêm nhân viên -->
+            <Button Width="130" Height="40" Margin="5" Click="ThemNV_Click" Background="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/Add.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Thêm nhân viên" VerticalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Button Xóa tài khoản -->
+            <Button Width="130" Height="40" Margin="5" Click="XoaNV_Click" Background="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/Delete.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Xóa nhân viên" VerticalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FF3C3C3C"/>
+                        <!-- Màu nền đen đậm -->
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Button Sửa tài khoản -->
+            <Button Width="130" Height="40" Margin="5" Click="SuaNV_Click" Background="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/Edit.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Sửa nhân viên" VerticalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FF3C3C3C"/>
+                        <!-- Màu nền đen đậm -->
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Button Tìm tài khoản -->
+            <Button Width="130" Height="40" Margin="5" Click="TimNV_Click" Background="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/Find.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Tìm nhân viên" VerticalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FF3C3C3C"/>
+                        <!-- Màu nền đen đậm -->
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Button Cancel -->
+            <Button Width="130" Height="40" Margin="5" Click="HuyThaoTac_Click" Background="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/Redo.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="Hủy bỏ" VerticalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FF3C3C3C"/>
+                        <!-- Màu nền đen đậm -->
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

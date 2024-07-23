@@ -1,0 +1,114 @@
+﻿<Window x:Class="TQH.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TQH"
+        mc:Ignorable="d"
+        Title="Đăng nhập" Height="500" Width="400"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
+    <Border CornerRadius="12">
+        <StackPanel>
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFFF00D7" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <TextBlock Text="LOG IN"
+                               Width="50"
+                               Foreground="DarkGray"
+                               FontSize="10"
+                               FontFamily="Montserrat"
+                               VerticalAlignment="Center"
+                               Margin="10,5,350,0"/>
+            <Button x:Name="btnMinimize"
+                            Width="30"
+                            BorderThickness="0"
+                            Foreground="White"
+                            FontSize="20"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Margin="10,-15,-320,0"
+                            Click="btnMinimize_Click" Background="{x:Null}">-
+            </Button>
+            <Button x:Name="btnClose"
+                            Width="30"
+                            BorderThickness="0"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Margin="10,-26,-360,0"
+                            Click="btnClose_Click" Background="{x:Null}">X
+            </Button>
+            <Image Height="120" Width="120" Margin ="0,65,0,0" Source="Resources/UserIcon.png"/>
+            <Label Height="50" Width="150" HorizontalContentAlignment="Center" FontSize="25" Foreground="WhiteSmoke" FontFamily="Script MT Bold">Đăng Nhập</Label>
+            <Label Height="1" Width="150" Background="White"></Label>
+            <Label Height="28" Width="120" HorizontalContentAlignment="Center" Foreground="WhiteSmoke" FontSize="13" Margin="0,20,60,0" FontWeight="Medium" FontFamily="Tahoma">Tên Đăng Nhập</Label>
+            <Image Height="25" Width="25" Margin ="0,0,180,0" Source="Resources/User.png"></Image>
+            <TextBox Name="txtUserName" Width="140" Height="25" Margin="0,-25,0,0" HorizontalContentAlignment="Left" FontSize="15"></TextBox>
+            <Label Height="28" Width="120" HorizontalContentAlignment="Left" Foreground="WhiteSmoke" FontSize="13" Margin="0,0,35,0" FontWeight="Medium" FontFamily="Tahoma">Mật Khẩu</Label>
+            <Image Height="25" Width="25" Margin ="0,0,180,0" Source="Resources/Password.png"></Image>
+            <PasswordBox Name="txtPassWord" Width="140" Height="25" Margin="0,-25,0,0" HorizontalContentAlignment="Left" FontSize="15"/>
+            <Button x:Name="btnLogin"                          
+                            BorderThickness="0"
+                            Content="LOG IN"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"                           
+                            Margin="0,25,0,0"
+                            Click="btnLogin_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF1F72BF"/>
+                        <GradientStop Color="#FF4A2C8E" Offset="0.472"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#462AD8"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#28AEED"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="150" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,15,0,0">
+                <TextBlock Text="Forgot Password?"
+                               Foreground="DimGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"/>
+                <TextBlock Text="Reset"
+                               Foreground="#FF393BC8"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"
+                               Cursor="Hand"
+                               Margin="8,0,0,0"/>
+            </StackPanel>
+            <Label Height="20" Width="80" HorizontalContentAlignment="Center" Foreground="WhiteSmoke" FontSize="10" Margin="0,20,-300,0" FontStyle="Italic" FontFamily="Tempus Sans ITC">Liên hệ hỗ trợ</Label>
+        </StackPanel>
+    </Border>
+</Window>
